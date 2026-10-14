@@ -1,0 +1,230 @@
+Bài 1 – Tính số lớn nhất
+def tim_max(a, b, c):
+    return max(a, b, c)
+
+
+a = float(input("Nhap so thu nhat: "))
+b = float(input("Nhap so thu hai: "))
+c = float(input("Nhap so thu ba: "))
+
+max_value = tim_max(a, b, c)
+
+print("So lon nhat:", max_value)
+
+if max_value % 2 == 0:
+    print("So lon nhat la so chan")
+else:
+    print("So lon nhat khong phai so chan")
+
+if max_value % 3 == 0:
+    print("Chia het cho 3")
+else:
+    print("Khong chia het cho 3")
+
+if max_value < 0:
+    print("So am")
+elif max_value > 0:
+    print("So duong")
+else:
+    print("Bang 0")
+Bài 2 – Tính tổng số chẵn
+def tong_chan(n):
+    total = 0
+
+    for i in range(2, n + 1, 2):
+        total += i
+
+    return total
+
+
+n = int(input("Nhap so nguyen duong n: "))
+
+if n <= 0:
+    print("Vui long nhap so nguyen duong")
+else:
+    total = tong_chan(n)
+
+    print("Tong cac so chan:", total)
+
+    if total > 100:
+        print("Tong lon")
+    else:
+        print("Tong nho")
+
+    print("Cac so chan tu 1 den", n, "la:")
+
+    for i in range(2, n + 1, 2):
+        print(i, end=" ")
+
+    print()
+Bài 3 – In bảng cửu chương
+def bang_cuu_chuong(n):
+    for i in range(1, 11):
+        print(f"{n} x {i} = {n * i}")
+
+
+while True:
+    n = int(input("Nhap so nguyen tu 2 den 9: "))
+
+    if 2 <= n <= 9:
+        break
+
+    print("So khong hop le, vui long nhap lai")
+
+bang_cuu_chuong(n)
+Bài 4 – Kiểm tra số nguyên tố
+def la_so_nguyen_to(n):
+    if n < 2:
+        return False
+
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
+            return False
+
+    return True
+
+
+n = int(input("Nhap so nguyen duong n: "))
+
+if n <= 0:
+    print("Vui long nhap so nguyen duong")
+elif la_so_nguyen_to(n):
+    print("Day la so nguyen to")
+else:
+    print("Cac uoc so cua", n, "la:")
+
+    for i in range(1, n + 1):
+        if n % i == 0:
+            print(i, end=" ")
+
+    print()
+Bài 5 – Menu lựa chọn
+def menu():
+    print("\n===== MENU =====")
+    print("1. Tinh tong 2 so")
+    print("2. Tinh hieu 2 so")
+    print("3. Thoat")
+
+
+while True:
+    menu()
+    choice = input("Nhap lua chon: ")
+
+    if choice == "1":
+        a = float(input("Nhap so thu nhat: "))
+        b = float(input("Nhap so thu hai: "))
+        print("Tong =", a + b)
+
+    elif choice == "2":
+        a = float(input("Nhap so thu nhat: "))
+        b = float(input("Nhap so thu hai: "))
+        print("Hieu =", a - b)
+
+    elif choice == "3":
+        print("Tam biet")
+        break
+
+    else:
+        print("Lua chon khong hop le")
+Bài 6 – Làm việc với danh sách (List)
+numbers = list(map(int, input("Nhap danh sach so nguyen: ").split()))
+
+print("So phan tu:", len(numbers))
+print("Tong:", sum(numbers))
+
+if numbers:
+    print("Trung binh:", sum(numbers) / len(numbers))
+    print("Danh sach tang dan:", sorted(numbers))
+else:
+    print("Danh sach rong")
+
+if 10 in numbers:
+    print("Vi tri dau tien cua so 10:", numbers.index(10))
+else:
+    print("Khong co so 10 trong danh sach")
+Bài 7 – Tuple và các thao tác cơ bản
+days = (
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday"
+)
+
+print("Ngay dau tien:", days[0])
+print("Ngay cuoi cung:", days[-1])
+
+for day in days:
+    print(day)
+
+if "Sunday" in days:
+    print("Sunday co trong tuple")
+else:
+    print("Sunday khong co trong tuple")
+
+day_list = list(days)
+day_list.append("Holiday")
+days = tuple(day_list)
+
+print("Tuple sau khi them Holiday:", days)
+Bài 8 – Dictionary: Thông tin sinh viên
+student = {
+    "name": "Nguyen Van A",
+    "age": 20,
+    "major": "Information Technology"
+}
+
+print("Thong tin sinh vien:", student)
+
+student["major"] = "Computer Science"
+student["gpa"] = 3.5
+
+for key, value in student.items():
+    print(f"{key}: {value}")
+Bài 9 – Set: Tập hợp số nguyên
+list1 = list(map(int, input("Nhap danh sach so nguyen thu nhat: ").split()))
+list2 = list(map(int, input("Nhap danh sach so nguyen thu hai: ").split()))
+
+set1 = set(list1)
+set2 = set(list2)
+
+print("Tap hop thu nhat:", set1)
+print("Tap hop thu hai:", set2)
+print("Giao hai tap hop:", set1 & set2)
+print("Hieu tap hop thu nhat:", set1 - set2)
+print("Hop hai tap hop:", set1 | set2)
+Bài 10 – Ứng dụng tổng hợp: Quản lý lớp học
+lop_hoc = {
+    "Nguyen Van A": 8.5,
+    "Tran Thi B": 7.5,
+    "Le Van C": 9.0
+}
+
+for i in range(3):
+    name = input(f"Nhap ten hoc sinh thu {i + 1}: ")
+    score = float(input("Nhap diem: "))
+
+    lop_hoc[name] = score
+
+average = sum(lop_hoc.values()) / len(lop_hoc)
+
+print("Diem trung binh cua lop:", average)
+
+print("Danh sach hoc sinh co diem lon hon 8:")
+
+for name, score in lop_hoc.items():
+    if score > 8:
+        print(f"{name}: {score}")
+
+sorted_students = sorted(
+    lop_hoc.items(),
+    key=lambda student: student[1],
+    reverse=True
+)
+
+print("Danh sach hoc sinh theo diem giam dan:")
+
+for name, score in sorted_students:
+    print(f"{name}: {score}")
